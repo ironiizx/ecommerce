@@ -1,0 +1,68 @@
+const products = [
+  {
+    _id: 1,
+    name: 'Chevrolet Onix',
+    price: 21000,
+    description: "Un hatchback compacto popular por su eficiencia y equipamiento.",
+    image: 'onix.jpg',
+    fatured: false,
+  },
+  {
+    _id: 2,
+    name: 'Chevrolet Tracker',
+    price: 30000,
+    description: 'Un SUV compacto con buen equipamiento y tecnología moderna.',
+    image: 'tracker.jpg',
+    fatured: true,
+  },
+  {
+    _id: 3,
+    name: 'Chevrolet Equinox',
+    price: 25000,
+    description: 'Un SUV de tamaño mediano con buenas características de confort y seguridad',
+    image: 'equinox.jpg',
+    fatured: true,
+  },
+  {
+    _id: 4,
+    name: 'Chevrolet Cruze',
+    price: 25000,
+    description: 'Un sedán compacto con un diseño moderno',
+    image: 'cruze.jpg',
+    fatured: true,
+  },
+  {
+    _id: 5,
+    name: 'Chevrolet Camaro',
+    price: 150000,
+    description: 'Deportivo icónico con opciones de motorización potentes y un diseño distintivo.',
+    image: 'camaro.jpg',
+    fatured: true,
+  },
+  {
+    _id: 6,
+    name: 'Chevrolet Blazer',
+    price: 50000,
+    description: "SUV de tamaño mediano con un diseño moderno y características premium",
+    image: 'blazer.jpg',
+    fatured: false,
+  },
+  {
+    _id: 7,
+    name: 'Chevrolet Malibu',
+    price: 17000,
+    description: 'Sedán mediano con un equilibrio entre confort, tecnología y eficiencia',
+    image: 'malibu.jpg',
+    fatured: true,
+  },
+  {
+    _id: 8,
+    name: 'Chevrolet Cruze RS',
+    price: 30000,
+    description: 'Un sedán compacto con un diseño moderno y deportivo',
+    image: 'cruzers.jpg',
+    fatured: true,
+  },
+];
+
+export default products
