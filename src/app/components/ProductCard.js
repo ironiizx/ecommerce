@@ -11,7 +11,8 @@ const ProductCard = ({ item }) => {
           width={0}
           height={0}
           sizes='100vw'
-          style={{width: '100%', height: 'auto'}}
+          style={{width: '80%', height: 'auto', margin: '0 auto'}}
+          className="mx-auto"
         />
       </div>
       <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
