@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useAppContext } from "@/app/contexts/AppContext";
 
-const ProductsChekOut = () => {
+const ProductsChekout = () => {
   const { cart, cartTotal } = useAppContext();
   return (
     <div>
@@ -22,9 +22,9 @@ const ProductsChekOut = () => {
           </div>
         ))}
       </div>
-      <p>Total: $ {cartTotal()}</p>
+      <p className="text-3xl font-bold mt-4">Total: U$S {cartTotal()}</p>
     </div>
   );
 };
 
-export default ProductsChekOut;
+export default ProductsChekout;

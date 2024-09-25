@@ -1,30 +1,50 @@
-"use client";
-import React, { useEffect } from "react";
 import Image from "next/image";
-import AddToCart from "./AddToCart";
+import AddToCart from "@/app/components/AddToCart";
 
 const ProductSingle = ({ product }) => {
-  const { image, name, price } = product;
-  return (
-    <section>
-      <div className="grid grid-cols-12">
-        <div className="col-span-6 flex justify-center items-center">
-          <Image
-          src={`/imgs/products/${image}`}
-          width={500}
-          height={500}
-          alt={name}
-          />
-        </div>
-        <div className="col-span-6 flex">
-          <h1>{name}</h1>
-          <p>Description</p>
-          <h3>{price}</h3>
-          <AddToCart price={price} name={price} image={price} />
-        </div>
-      </div>
-    </section>
+  const { id, name, author, editorial, description, price, stock, image } = product;
 
+  return (
+    <>
+      <section className="py-20">
+        <div className="grid grid-cols-12 bg-white p-8">
+          {/* Imagen del producto */}
+          <div className="col-span-6 flex justify-center items-center">
+            <Image
+              className="shadow-lg"
+              src={`/imgs/${image}`}
+              width={600}
+              height={600}
+              alt={name}
+            />
+          </div>
+
+          {/* Información del producto */}
+          <div className="col-span-6 flex flex-col items-start pl-8">
+            <h1 className="text-2xl font-bold text-black mb-2">
+              Nombre: <span className="font-normal">{name}</span>
+            </h1>
+            <p className="text-xl font-bold text-black mb-4">
+              Descripción: <span className="font-normal">{description}</span>
+            </p>
+
+            {/* Precio destacado debajo de la descripción */}
+            <h3 className="text-3xl font-bold text-black mb-6">
+              Precio: <span className="text-4xl">${price}</span>
+            </h3>
+
+            {/* Botón con estilo */}
+            <AddToCart
+              name={name}
+              image={image}
+              price={price}
+              id={id}
+              className="bg-yellow-500 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-yellow-600 transition-colors text-lg"
+            />
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 

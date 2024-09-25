@@ -1,18 +1,30 @@
 import Inner from "@/app/components/Inner";
-import ProductsChekOut from "@/app/components/cart/ProductsChekOut";
+import ProductsCheckout from "@/app/components/cart/ProductsCheckout";
 import FormCheckout from "@/app/components/cart/FormCheckout";
 
 const Cart = () => {
   return (
-    <section className='h-screen mt-32'>
-      <h1 className='bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors'>Cart</h1>
+    <section className="h-auto mt-12 mb-12 bg-gray-100 py-8">
       <Inner>
-        <div className='grid grid-cols-12'>
-          <div className='col-span-12 lg:col-span-6 bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors'>
-            <FormCheckout />
+        <h1 className="text-4xl font-bold text-center mb-8 text-yellow-500">
+          Carrito de Compras
+        </h1>
+
+        <div className="grid grid-cols-12 gap-8">
+          {/* Sección de productos */}
+          <div className="col-span-12 lg:col-span-7 bg-white p-6 shadow-lg rounded-lg">
+            <h2 className="text-2xl font-semibold mb-4 text-black">
+              Productos en el carrito
+            </h2>
+            <ProductsCheckout />
           </div>
-          <div className='col-span-12 lg:col-span-6 bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors'>
-            <ProductsChekOut />
+
+          {/* Sección del formulario de Checkout */}
+          <div className="col-span-12 lg:col-span-5 bg-white p-6 shadow-lg rounded-lg">
+            <h2 className="text-2xl font-semibold mb-4 text-black">
+              Información de Pago
+            </h2>
+            <FormCheckout />
           </div>
         </div>
       </Inner>

@@ -7,17 +7,42 @@ const AppContext = createContext(undefined);
 export const AppContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const cartLength = cart.length;
+  // Sumamos la cantidad total de productos en el carrito
+  const cartLength = cart.reduce((acc, item) => acc + item.quantity, 0);
 
-  const handleAddToCart = (name, price, image, quantity) => {
+  const handleAddToCart = (name, price, image, id, quantity) => {
     const product = {
       name,
       price,
       image,
+      id,
       quantity,
     };
-    setState([...cart, product]);
+
+    // Buscar si el producto ya está en el carrito basado en el ID y la imagen
+    const existingProductIndex = cart.findIndex(
+      (item) => item.id === id && item.image === image
+    );
+
+    if (existingProductIndex !== -1) {
+      // Si el producto ya está en el carrito, aumentar la cantidad
+      const updatedCart = [...cart];
+      updatedCart[existingProductIndex].quantity += quantity;
+      setCart(updatedCart);
+    } else {
+      // Si no está en el carrito, agregarlo como nuevo
+      setCart([...cart, product]);
+    }
   };
+
+  const handleRemoveProduct = (id, image) => {
+    // Eliminar el producto basado en id y imagen
+    const updatedCart = cart.filter((item) => item.id !== id || item.image !== image);
+    setCart(updatedCart);
+  };
+
+  const cartTotal = () =>
+    cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
     <AppContext.Provider
@@ -26,6 +51,8 @@ export const AppContextProvider = ({ children }) => {
         setCart,
         cartLength,
         handleAddToCart,
+        handleRemoveProduct,
+        cartTotal,
       }}
     >
       {children}
@@ -36,7 +63,7 @@ export const AppContextProvider = ({ children }) => {
 export const useAppContext = () => {
   const context = useContext(AppContext);
   if (!context) {
-    throw new Error(`useAppContext tiene que ser usado dentro del provider`);
+    throw new Error(`useAppContext debe ser usado dentro del provider`);
   }
   return context;
 };

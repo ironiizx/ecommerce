@@ -16,7 +16,7 @@ const ProductCard = ({ item }) => {
         />
       </div>
       <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
-      <p className="text-gray-600 mb-4">${item.price}</p> 
+      <p className="text-gray-600 mb-4">U$S {item.price}</p> 
       <Link 
         href={`/product/${item._id}`} 
         className="bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors"
