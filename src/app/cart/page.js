@@ -11,7 +11,6 @@ const Cart = () => {
         </h1>
 
         <div className="grid grid-cols-12 gap-8">
-          {/* Sección de productos */}
           <div className="col-span-12 lg:col-span-7 bg-white p-6 shadow-lg rounded-lg">
             <h2 className="text-2xl font-semibold mb-4 text-black">
               Productos en el carrito
@@ -19,7 +18,6 @@ const Cart = () => {
             <ProductsCheckout />
           </div>
 
-          {/* Sección del formulario de Checkout */}
           <div className="col-span-12 lg:col-span-5 bg-white p-6 shadow-lg rounded-lg">
             <h2 className="text-2xl font-semibold mb-4 text-black">
               Información de Pago

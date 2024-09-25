@@ -8,7 +8,7 @@ const ProductSingle = ({ product }) => {
     <>
       <section className="py-20">
         <div className="grid grid-cols-12 bg-white p-8">
-          {/* Imagen del producto */}
+
           <div className="col-span-6 flex justify-center items-center">
             <Image
               className="shadow-lg"
@@ -19,7 +19,6 @@ const ProductSingle = ({ product }) => {
             />
           </div>
 
-          {/* Información del producto */}
           <div className="col-span-6 flex flex-col items-start pl-8">
             <h1 className="text-2xl font-bold text-black mb-2">
               Nombre: <span className="font-normal">{name}</span>
@@ -28,12 +27,10 @@ const ProductSingle = ({ product }) => {
               Descripción: <span className="font-normal">{description}</span>
             </p>
 
-            {/* Precio destacado debajo de la descripción */}
             <h3 className="text-3xl font-bold text-black mb-6">
               Precio: <span className="text-4xl">${price}</span>
             </h3>
 
-            {/* Botón con estilo */}
             <AddToCart
               name={name}
               image={image}

@@ -7,7 +7,6 @@ const AppContext = createContext(undefined);
 export const AppContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  // Sumamos la cantidad total de productos en el carrito
   const cartLength = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   const handleAddToCart = (name, price, image, id, quantity) => {
@@ -19,24 +18,20 @@ export const AppContextProvider = ({ children }) => {
       quantity,
     };
 
-    // Buscar si el producto ya está en el carrito basado en el ID y la imagen
     const existingProductIndex = cart.findIndex(
       (item) => item.id === id && item.image === image
     );
 
     if (existingProductIndex !== -1) {
-      // Si el producto ya está en el carrito, aumentar la cantidad
       const updatedCart = [...cart];
       updatedCart[existingProductIndex].quantity += quantity;
       setCart(updatedCart);
     } else {
-      // Si no está en el carrito, agregarlo como nuevo
       setCart([...cart, product]);
     }
   };
 
   const handleRemoveProduct = (id, image) => {
-    // Eliminar el producto basado en id y imagen
     const updatedCart = cart.filter((item) => item.id !== id || item.image !== image);
     setCart(updatedCart);
   };
