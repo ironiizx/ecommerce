@@ -3,6 +3,7 @@ import './globals.css';
 
 import { AppContextProvider } from '@/app/contexts/AppContext';
 import Navbar from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,7 +19,7 @@ export default function RootLayout({ children }) {
         <AppContextProvider>
           <Navbar />
           {children}
-          
+          <Footer/>
         </AppContextProvider>
       </body>
     </html>

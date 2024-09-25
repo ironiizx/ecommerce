@@ -1,23 +1,15 @@
-"use client";
-import React from "react";
+'use client'
 import { useAppContext } from "@/app/contexts/AppContext";
 
-const AddToCart = ({ name, price, image }) => {
-  const { handleAddToCart } = useAppContext();
-
-  if (!name || !price || !image) {
-    console.error("Missing product data:", { name, price, image });
-    return null;
-  }
-
+const AddToCart = ({name, price, id, image}) => {
+  const {handleAddToCart} = useAppContext()  
   return (
-    <button
-      onClick={() => handleAddToCart(name, price, image, 1)}
-      className="btn"
-    >
-      Add to cart
+    <>
+    <button onClick={()=> handleAddToCart(name, price, image, id, 1)} className="bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors">
+        Add to cart
     </button>
-  );
-};
+    </>
+  )
+}
 
-export default AddToCart;
+export default AddToCart

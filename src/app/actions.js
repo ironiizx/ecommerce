@@ -1,6 +1,6 @@
 import axios from 'axios';
-import dbConnect from "@/app/database/dbConnect";
-import Product from "@/app/models/Product"; 
+import Product from "@/app/models/Product";
+import dbConnect from '@/app/database/dbConnect'
 
 const getAllProducts = async () => {
   try {
@@ -12,36 +12,39 @@ const getAllProducts = async () => {
 };
 
 const getOneProduct = async (id) => {
+  //TO BE CONTINUED
   try {
-    const response = await axios.post('http://localhost:3000/api/products', { id });
-    return response.data.product;
+    const response = await axios.post('http://localhost:3000/api/products', {
+      id,
+    });
+    return response.data.products;
   } catch (error) {
     console.log(error);
   }
 };
 
-
 export async function getAllProductsDB() {
-  await dbConnect(); 
+  await dbConnect();
   try {
     const products = await Product.find().sort({ name: "asc" });
+   
     return { products: JSON.parse(JSON.stringify(products)) };
   } catch (error) {
-    console.log('Error:', error.message);
+    console.log("Error: ", error.message);
     return { products: [], category: null };
   }
 }
 
-
-export async function getOneProductDB(id){
+export async function getOneProductDB(id) {
   await dbConnect();
-  try {
-    const product = await Product.findById(id);
-    return { product: JSON.parse(JSON.stringify(product)) };
-  } catch (error) {
+  try{
+    const product = await Product.findById(id)
+    return {product: JSON.parse(JSON.stringify(product))};
+  } catch (error){
     console.log(error);
     return null;
   }
 }
+
 
 export { getAllProducts, getOneProduct };
