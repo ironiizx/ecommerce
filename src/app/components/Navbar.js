@@ -21,19 +21,19 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href={`/Vehicles`} className='font-bold relative group'>
+              <Link href={`/vehiculos`} className='font-bold relative group'>
                 Vehicles
                 <span className='block h-1 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left'></span>
               </Link>
             </li>
             <li>
-              <Link href={`/Shop`} className='font-bold relative group'>
-                Shop
+              <Link href={`/aboutus`} className='font-bold relative group'>
+                About us
                 <span className='block h-1 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left'></span>
               </Link>
             </li>
             <li>
-              <Link href={`/Contact`} className='font-bold relative group'>
+              <Link href={`/contact`} className='font-bold relative group'>
                 Contact
                 <span className='block h-1 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left'></span>
               </Link>

@@ -18,7 +18,7 @@ const ProductsChekout = () => {
               />
               <h2>{`${product.name} x ${product.quantity}`}</h2>
             </div>
-            <p>$ {product.price * product.quantity}</p>
+            <p>U$S {product.price * product.quantity}</p>
           </div>
         ))}
       </div>

@@ -1,12 +1,12 @@
 import Inner from "@/app/components/Inner";
 import ProductsCheckout from "@/app/components/cart/ProductsCheckout";
-import FormCheckout from "@/app/components/cart/FormCheckout";
+import CartForm from "../components/CartForm/CartForm";
 
 const Cart = () => {
   return (
     <section className="h-auto mt-12 mb-12 bg-gray-100 py-8">
       <Inner>
-        <h1 className="text-4xl font-bold text-center mb-8 text-yellow-500">
+        <h1 className="text-4xl font-bold text-center mb-8 text-black">
           Carrito de Compras
         </h1>
 
@@ -22,7 +22,7 @@ const Cart = () => {
             <h2 className="text-2xl font-semibold mb-4 text-black">
               Información de Pago
             </h2>
-            <FormCheckout />
+            <CartForm />
           </div>
         </div>
       </Inner>
