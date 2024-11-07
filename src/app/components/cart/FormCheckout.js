@@ -61,27 +61,6 @@ const FormCheckout = () => {
           />
         </div>
       </div>
-      <div>
-        <label htmlFor="zip" className="block text-lg font-medium text-gray-700">Código Postal</label>
-        <input
-          type="text"
-          id="zip"
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="payment" className="block text-lg font-medium text-gray-700">Método de Pago</label>
-        <select
-          id="payment"
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
-          required
-        >
-          <option value="credit">Tarjeta de Crédito</option>
-          <option value="debit">Tarjeta de Débito</option>
-          <option value="mercadopago">MercadoPago</option>
-        </select>
-      </div>
       <button
         type="submit"
         className="bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors"

@@ -1,0 +1,35 @@
+.option-button {
+    padding: 0.5rem 1rem;
+    border: 2px solid yellow;
+    background-color: transparent;
+    transition: 0.3s;
+  }
+  .option-button.selected {
+    background-color: yellow;
+    color: black;
+  }
+  
+  .color-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: cover;
+    cursor: pointer;
+    border: 2px solid yellow;
+    transition: 0.3s;
+  }
+  .color-circle.selected {
+    border: 3px solid yellow;
+  }
+  
+  .interior-option img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid yellow;
+  }
+  .interior-option.selected img {
+    border: 3px solid yellow;
+  }
+  

@@ -1,33 +1,27 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ProductCard = ({ item }) => {
+const ProductCard = ({ item, isSelected, onSelect }) => {
   return (
-    <div className="col-span-3 flex flex-col items-center bg-white p-4 shadow-lg rounded-lg">
-      <div className="w-full h-48 relative mb-4">
+    <div
+      onClick={onSelect}
+      className={`bg-white p-4 rounded-lg flex flex-col items-center cursor-pointer ${
+        isSelected ? 'border-4 border-yellow-500' : ''
+      }`}
+    >
+      <h3 className="text-center text-lg font-semibold">{item.name}</h3>
+      <div className="w-full h-48 relative mb-4 flex justify-center">
         <Image
-          src={`/imgs/${item.image}`} 
+          src={`/imgs/${item.image}`}
           alt={item.name}
-          width={0}
-          height={0}
-          sizes='100vw'
-          style={{width: '80%', height: 'auto', margin: '0 auto'}}
-          className="mx-auto"
+          width={150}
+          height={90}
+          style={{ objectFit: 'contain' }}
         />
       </div>
-      <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
-      <p className="text-gray-600 mb-4">U$S {item.price}</p> 
-      <Link 
-        href={`/product/${item._id}`} 
-        className="bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors"
-      >
-        Ver más
-      </Link>
-      
+
     </div>
-  
   );
 };
 
 export default ProductCard;
-

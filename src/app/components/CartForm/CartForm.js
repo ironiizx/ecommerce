@@ -18,7 +18,7 @@ const CartForm = () => {
       .then(
         () => {
           console.log('¡Éxito! El correo ha sido enviado.');
-          setSuccessMessage('Compra realizada con éxito.'); 
+          setSuccessMessage('Cotización realizada con éxito.'); 
           form.current.reset(); 
         },
         (error) => {
@@ -90,44 +90,12 @@ const CartForm = () => {
           />
         </div>
 
-        <div className={styles.fieldContainer}>
-          <label htmlFor="pais" className={`block text-lg font-medium text-gray-700 ${styles.labelMargin}`}>País</label>
-          <input
-            type="text"
-            name="pais"
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
-            required
-          />
-        </div>
-
-        <div className={styles.fieldContainer}>
-          <label htmlFor="codigo_postal" className={`block text-lg font-medium text-gray-700 ${styles.labelMargin}`}>Código Postal</label>
-          <input
-            type="text"
-            id="zip"
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
-            required
-          />
-        </div>
-
-        <div className={styles.fieldContainer}>
-          <label htmlFor="metodo_pago" className={`block text-lg font-medium text-gray-700 ${styles.labelMargin}`}>Método de Pago</label>
-          <select
-            id="payment"
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
-            required
-          >
-            <option value="credit">Tarjeta de Crédito</option>
-            <option value="debit">Tarjeta de Débito</option>
-            <option value="mercadopago">MercadoPago</option>
-          </select>
-        </div>
 
         <button
           type="submit"
           className="bg-yellow-500 text-white pt-4 py-3 px-5 rounded-lg hover:bg-yellow-600 transition-colors"
         >
-          Completar Compra
+          Completar cotización
         </button>
       </form>
 

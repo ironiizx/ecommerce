@@ -9,19 +9,22 @@ export const AppContextProvider = ({ children }) => {
 
   const cartLength = cart.reduce((acc, item) => acc + item.quantity, 0);
 
-  const handleAddToCart = (name, price, image, id, quantity) => {
+  const handleAddToCart = (name, price, image, id, quantity, model, color, interior) => {
     const product = {
       name,
       price,
       image,
       id,
       quantity,
+      model,
+      color,
+      interior,
     };
-
+  
     const existingProductIndex = cart.findIndex(
       (item) => item.id === id && item.image === image
     );
-
+  
     if (existingProductIndex !== -1) {
       const updatedCart = [...cart];
       updatedCart[existingProductIndex].quantity += quantity;

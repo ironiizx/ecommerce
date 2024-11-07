@@ -4,23 +4,20 @@ import CartForm from "../components/CartForm/CartForm";
 
 const Cart = () => {
   return (
-    <section className="h-auto mt-12 mb-12 bg-gray-100 py-8">
+    <section className="h-auto mt-12 mb-12 py-12 pb-40 bg-white"> {/* Fondo blanco y mayor margen */}
       <Inner>
-        <h1 className="text-4xl font-bold text-center mb-8 text-black">
-          Carrito de Compras
-        </h1>
-
         <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-12 lg:col-span-7 bg-white p-6 shadow-lg rounded-lg">
-            <h2 className="text-2xl font-semibold mb-4 text-black">
-              Productos en el carrito
+          <div className="col-span-12 lg:col-span-7 bg-white p-8 shadow-lg rounded-lg">
+            {/* Título más grande y resaltado */}
+            <h2 className="text-3xl font-bold mb-6 text-black">
+              Vehículo a Cotizar
             </h2>
             <ProductsCheckout />
           </div>
 
-          <div className="col-span-12 lg:col-span-5 bg-white p-6 shadow-lg rounded-lg">
-            <h2 className="text-2xl font-semibold mb-4 text-black">
-              Información de Pago
+          <div className="col-span-12 lg:col-span-5 bg-white p-8 shadow-lg rounded-lg">
+            <h2 className="text-3xl font-bold mb-6 text-black">
+              Información para cotización
             </h2>
             <CartForm />
           </div>
