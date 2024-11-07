@@ -36,8 +36,8 @@ const CustomizeProduct = ({ product, onComplete }) => {
   ];
 
   const interiorOptions = [
-    { name: "Cuero blanco", image: "/imgs/cuero_blanco.png" },
-    { name: "Cuero rojo", image: "/imgs/cuero_rojo.png" },
+    { name: "Cuero blanco", image: "/imgs/cuero_blanco2.png" },
+    { name: "Cuero rojo", image: "/imgs/cuero_rojo1.png" },
   ];
 
   const selectedVehicleImage = selectedTab === "interior" 
@@ -112,7 +112,7 @@ const CustomizeProduct = ({ product, onComplete }) => {
     <div className="customization-container p-5 flex pb-60"> 
       <div className="w-1/2 flex justify-center items-center">
         {selectedVehicleImage ? (
-          <Image src={selectedVehicleImage} alt={product.name} width={600} height={500} />
+          <Image src={selectedVehicleImage} alt={product.name} width={850} height={200} />
         ) : (
           <p className="text-center text-gray-500">Seleccione un color o un interior</p>
         )}
