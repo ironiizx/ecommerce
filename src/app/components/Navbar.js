@@ -9,27 +9,27 @@ import { useState } from 'react';
 export default function Navbar() {
   const { cartLength } = useAppContext();
   const [showVehicles, setShowVehicles] = useState(false);
-  const [vehicleQuoted, setVehicleQuoted] = useState(false); // Estado para la alerta
-  let timer; // Variable para el temporizador
+  const [vehicleQuoted, setVehicleQuoted] = useState(false);
+  let timer; 
 
   const handleVehiclesHover = () => {
-    clearTimeout(timer); // Limpia el temporizador si está activo
+    clearTimeout(timer); 
     setShowVehicles(true);
   };
 
   const handleVehiclesLeave = () => {
-    // Inicia un temporizador para cerrar el menú después de un breve período
+   
     timer = setTimeout(() => {
       setShowVehicles(false);
-    }, 200); // Puedes ajustar el tiempo en milisegundos (por ejemplo, 300ms)
+    }, 200); 
   };
 
-  // Función para mostrar la alerta de vehículo cotizado
+
   const handleQuoteAlert = () => {
     setVehicleQuoted(true);
     setTimeout(() => {
-      setVehicleQuoted(false); // Ocultar la alerta después de un tiempo
-    }, 3000); // La alerta se oculta después de 3 segundos
+      setVehicleQuoted(false); 
+    }, 3000); 
   };
 
   return (
@@ -57,10 +57,10 @@ export default function Navbar() {
                 className={`absolute top-full left-0 mt-2 w-[1400px] bg-white text-black rounded-lg shadow-lg z-20 pl-10 transition-all duration-250 ease-out transform ${
                   showVehicles ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'
                 }`}
-                onMouseEnter={handleVehiclesHover} // Mantener abierto cuando el mouse está dentro del menú
-                onMouseLeave={handleVehiclesLeave} // Cerrar cuando el mouse sale del menú
+                onMouseEnter={handleVehiclesHover}
+                onMouseLeave={handleVehiclesLeave} 
               >
-                <ProductsGrid onQuote={handleQuoteAlert} /> {/* Pasa la función al ProductsGrid */}
+                <ProductsGrid onQuote={handleQuoteAlert} /> 
               </div>
             </li>
             <li>
@@ -83,11 +83,10 @@ export default function Navbar() {
         <div className='relative'>
           <FaCartShopping size={30} />
           {cartLength > 0 && (
-            <span className='absolute top-5 left-5 flex items-center justify-center bg-black text-white rounded-full w-2 h-4 p-4 text-sm'>
+            <span className='absolute top-5 left-5 flex items-center justify-center bg-yellow-500 text-white rounded-full w-2 h-4 p-3 text-sm'>
               {cartLength}
             </span>
           )}
-          {/* Alerta de vehículo cotizado */}
           {vehicleQuoted && (
             <span className='absolute top-0 left-10 bg-yellow-500 text-black p-2 rounded-lg transition-opacity duration-300'>
               Vehículo cotizado!

@@ -40,7 +40,6 @@ const CustomizeProduct = ({ product, onComplete }) => {
     { name: "Cuero rojo", image: "/imgs/cuero_rojo.png" },
   ];
 
-  // Imagen del vehículo según el color seleccionado o imagen del interior si está seleccionado
   const selectedVehicleImage = selectedTab === "interior" 
     ? interior 
       ? interiorOptions.find(opt => opt.name === interior)?.image 
@@ -110,23 +109,20 @@ const CustomizeProduct = ({ product, onComplete }) => {
   };
 
   return (
-    <div className="customization-container p-4 flex pb-60"> {/* Agregar padding-bottom aquí */}
-      {/* Imagen del Vehículo o Interior */}
+    <div className="customization-container p-5 flex pb-60"> 
       <div className="w-1/2 flex justify-center items-center">
         {selectedVehicleImage ? (
-          <Image src={selectedVehicleImage} alt={product.name} width={500} height={500} />
+          <Image src={selectedVehicleImage} alt={product.name} width={600} height={500} />
         ) : (
           <p className="text-center text-gray-500">Seleccione un color o un interior</p>
         )}
       </div>
 
-      {/* Sección de Personalización o Resumen Final */}
       <div className="w-1/2 pl-8">
         <h2 className="text-3xl font-bold mb-6">{product.name}</h2>
 
         {showFinalSummary ? (
           <div>
-            {/* Resumen final */}
             <div className="mt-8 p-4 border-t border-gray-200 text-lg">
               <h4 className="text-2xl font-semibold mb-4">Resumen final</h4>
               <p className="text-gray-700">Modelo: {model || "No seleccionado"}</p>
@@ -151,7 +147,6 @@ const CustomizeProduct = ({ product, onComplete }) => {
           </div>
         ) : (
           <>
-            {/* Menú de opciones con subrayado dinámico */}
             <div className="flex gap-8 mb-6 relative text-xl font-semibold">
               <button
                 onClick={() => setSelectedTab("model")}
@@ -182,10 +177,8 @@ const CustomizeProduct = ({ product, onComplete }) => {
               />
             </div>
 
-            {/* Opciones de Personalización */}
             {renderOptions()}
 
-            {/* Resumen de selección durante la elección */}
             <div className="mt-8 p-4 border-t border-gray-200 text-lg">
               <h4 className="text-xl font-semibold">Resumen de selección</h4>
               {model && <p className="text-gray-700">Modelo seleccionado: {model}</p>}

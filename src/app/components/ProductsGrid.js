@@ -29,10 +29,9 @@ export default function ProductsGrid({ onCotizaClick }) {
     <section className="mb-16 pt-10">
       <Inner>
         <div className="grid grid-cols-12 gap-6">
-          {/* Columna izquierda para categorías */}
             <div className="col-span-2 bg-white p-6 rounded-lg">
             <h2 className="text-4xl font-bold mb-2">All the Vehicles</h2>
-            <ul className="text-3xl font-semibold space-y-2"> {/* Cambia aquí a text-4xl para un texto más grande */}
+            <ul className="text-3xl font-semibold space-y-2"> 
               <li>Electric</li>
               <li>SUV</li>
               <li>Trucks</li>
@@ -48,14 +47,13 @@ export default function ProductsGrid({ onCotizaClick }) {
                     : 'bg-gray-200 text-gray-800 cursor-not-allowed'
                 }`}
                 disabled={!selectedVehicle}
-                onClick={onCotizaClick} // Llamar a onCotizaClick al hacer clic
+                onClick={onCotizaClick} 
               >
                 Cotizá ahora!
               </button>
             </Link>
           </div>
 
-          {/* Columna derecha para la galería de vehículos */}
           <div className="col-span-9 grid grid-cols-4 gap-6">
             {products.map((item) => (
               <ProductCard
