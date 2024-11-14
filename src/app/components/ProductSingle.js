@@ -1,28 +1,31 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import AddToCart from "@/app/components/AddToCart";
 import CustomizeProduct from "@/app/components/CustomizeProduct";
 import { useAppContext } from "@/app/contexts/AppContext";
 
 const ProductSingle = ({ product }) => {
-  const { id, name, description, price, image } = product;
+  const { id, name, description, price, image, customizationOptions } = product;
+  const { handleAddToCart, setSelectedSummary } = useAppContext();
   const [showCustomize, setShowCustomize] = useState(false);
   const [hasCustomized, setHasCustomized] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState({
-    model: "LS",
-    color: "Negro Mosaico Metálico",
-    interior: "Cuero blanco",
+    model: customizationOptions?.modelOptions[0]?.name || "LS",
+    color: customizationOptions?.colorOptions[0]?.name || "Negro Mosaico Metálico",
+    interior: customizationOptions?.interiorOptions[0]?.name || "Cuero blanco",
     image,
   });
 
-  const { handleAddToCart } = useAppContext();
-
   const handleCustomizeComplete = (options) => {
-    setSelectedOptions(options); 
-    setShowCustomize(false); 
-    setHasCustomized(true); 
+    setSelectedOptions(options);
+    setSelectedSummary({ 
+      model: options.model,
+      color: options.color,
+      interior: options.interior,
+    });
+    setShowCustomize(false);
+    setHasCustomized(true);
   };
 
   const addToCart = () => {
@@ -38,6 +41,10 @@ const ProductSingle = ({ product }) => {
     );
   };
 
+  useEffect(() => {
+    console.log("Product data:", product);
+  }, [product]);
+
   return (
     <div className="py-40 pb-60">
       {!showCustomize ? (
@@ -45,7 +52,7 @@ const ProductSingle = ({ product }) => {
           <div className="col-span-6 flex justify-center items-center">
             <Image
               src={`/imgs/${selectedOptions.image}`}
-              width={650}
+              width={850}
               height={600}
               alt={name}
               className=""

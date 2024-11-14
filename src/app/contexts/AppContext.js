@@ -6,6 +6,7 @@ const AppContext = createContext(undefined);
 
 export const AppContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [selectedSummary, setSelectedSummary] = useState(null); 
 
   const cartLength = cart.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -51,6 +52,8 @@ export const AppContextProvider = ({ children }) => {
         handleAddToCart,
         handleRemoveProduct,
         cartTotal,
+        selectedSummary,
+        setSelectedSummary, 
       }}
     >
       {children}

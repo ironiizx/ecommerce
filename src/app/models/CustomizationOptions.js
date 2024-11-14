@@ -1,5 +1,3 @@
-// src/models/CustomizationOptions.js
-
 import mongoose from 'mongoose';
 
 const customizationOptionsSchema = new mongoose.Schema({

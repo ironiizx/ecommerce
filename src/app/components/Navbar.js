@@ -1,4 +1,5 @@
 'use client';
+
 import { useAppContext } from '@/app/contexts/AppContext';
 import Link from 'next/link';
 import Image from 'next/image';

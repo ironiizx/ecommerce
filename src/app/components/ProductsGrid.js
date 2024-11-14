@@ -1,4 +1,5 @@
 'use client';
+
 import Inner from '@/app/components/Inner';
 import ProductCard from '@/app/components/ProductCard';
 import { useState, useEffect } from 'react';

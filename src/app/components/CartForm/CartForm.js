@@ -1,11 +1,13 @@
-"use client";
+'use client';
 
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { useAppContext } from "@/app/contexts/AppContext";
 import styles from './CartForm.modules.css';
 
 const CartForm = () => {
   const form = useRef();
+  const { selectedSummary } = useAppContext();
   const [successMessage, setSuccessMessage] = useState(''); 
 
   const sendEmail = (e) => {
@@ -35,6 +37,7 @@ const CartForm = () => {
           <input
             type="text"
             id="firstName"
+            name="user_name"
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
             required
           />
@@ -45,6 +48,7 @@ const CartForm = () => {
           <input
             type="text"
             id="lastName"
+            name="last_name"
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
             required
           />
@@ -75,6 +79,7 @@ const CartForm = () => {
           <input
             type="text"
             id="address"
+            name="address"
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
             required
           />
@@ -85,11 +90,17 @@ const CartForm = () => {
           <input
             type="text"
             id="city"
+            name="city"
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
             required
           />
         </div>
 
+        <input
+          type="hidden"
+          name="summary"
+          value={`Modelo: ${selectedSummary?.model}\nColor: ${selectedSummary?.color}\nInterior: ${selectedSummary?.interior}`}
+        />
 
         <button
           type="submit"

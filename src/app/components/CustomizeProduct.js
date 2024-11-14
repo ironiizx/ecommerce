@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 
 const CustomizeProduct = ({ product, onComplete }) => {
+  const customizationOptions = product.customizationOptions;
   const [selectedTab, setSelectedTab] = useState("model");
   const [model, setModel] = useState(null);
   const [color, setColor] = useState(null);
@@ -19,32 +20,29 @@ const CustomizeProduct = ({ product, onComplete }) => {
     "Naranja Crush": "naranja.png",
   };
 
-  const modelOptions = [
-    { name: "LS", description: "Motor 2.0L Turbo de 275 hp." },
-    { name: "LT", description: "Más equipado que el LS." },
-    { name: "SS", description: "Motor V8 de 6.2L con 455 hp." },
-    { name: "ZL1", description: "Potente motor supercargado V8." },
-  ];
+  const interiorToImageMap = {
+    "Cuero blanco": "cuero_blanco2.png",
+    "Cuero rojo": "cuero_rojo1.png",
+  };
 
-  const colorOptions = [
-    { name: "Blanco Summit", image: "/imgs/blanco_summit.png" },
-    { name: "Negro Mosaico Metálico", image: "/imgs/negro_mosaico_metalico.png" },
-    { name: "Rojo Garnet Tintcoat", image: "/imgs/rojo_garnet_tintcoat.png" },
-    { name: "Azul Riverside", image: "/imgs/azul_riverside.png" },
-    { name: "Amarillo Shock", image: "/imgs/amarillo_shock.png" },
-    { name: "Naranja Crush", image: "/imgs/naranja_crush.png" },
-  ];
-
-  const interiorOptions = [
-    { name: "Cuero blanco", image: "/imgs/cuero_blanco2.png" },
-    { name: "Cuero rojo", image: "/imgs/cuero_rojo1.png" },
-  ];
-
-  const selectedVehicleImage = selectedTab === "interior" 
-    ? interior 
-      ? interiorOptions.find(opt => opt.name === interior)?.image 
-      : null
+  const selectedImage = showFinalSummary
+    ? `/imgs/${colorToImageMap[color || "Negro Mosaico Metálico"]}`
+    : selectedTab === "interior" && interior
+    ? `/imgs/${interiorToImageMap[interior]}`
     : `/imgs/${colorToImageMap[color || "Negro Mosaico Metálico"]}`;
+
+  const handleFinalizeCustomization = () => {
+    onComplete({
+      model,
+      color,
+      interior,
+      image: colorToImageMap[color || "Negro Mosaico Metálico"],
+    });
+  };
+
+  if (!customizationOptions) {
+    return <p>No hay opciones para este producto</p>;
+  }
 
   const renderOptions = () => {
     if (selectedTab === "model") {
@@ -52,7 +50,7 @@ const CustomizeProduct = ({ product, onComplete }) => {
         <div>
           <h3 className="text-2xl font-semibold mb-4">Modelo</h3>
           <div className="flex gap-4">
-            {modelOptions.map((option) => (
+            {customizationOptions.modelOptions.map((option) => (
               <button
                 key={option.name}
                 className={`px-6 py-3 text-lg border-4 rounded-lg ${
@@ -64,7 +62,7 @@ const CustomizeProduct = ({ product, onComplete }) => {
               </button>
             ))}
           </div>
-          {model && <p className="mt-4 text-lg text-gray-600">{modelOptions.find((m) => m.name === model)?.description}</p>}
+          {model && <p className="mt-4 text-lg text-gray-600">{customizationOptions.modelOptions.find((m) => m.name === model)?.description}</p>}
         </div>
       );
     } else if (selectedTab === "color") {
@@ -72,7 +70,7 @@ const CustomizeProduct = ({ product, onComplete }) => {
         <div>
           <h3 className="text-2xl font-semibold mb-4">Color Exterior</h3>
           <div className="flex gap-4">
-            {colorOptions.map((colorOption) => (
+            {customizationOptions.colorOptions.map((colorOption) => (
               <button
                 key={colorOption.name}
                 className={`w-16 h-16 rounded-full border-4 ${
@@ -80,7 +78,7 @@ const CustomizeProduct = ({ product, onComplete }) => {
                 }`}
                 onClick={() => setColor(colorOption.name)}
               >
-                <Image src={colorOption.image} alt={colorOption.name} width={64} height={64} className="rounded-full" />
+                <Image src={`/imgs/${colorOption.image}`} alt={colorOption.name} width={64} height={64} className="rounded-full" />
               </button>
             ))}
           </div>
@@ -91,7 +89,7 @@ const CustomizeProduct = ({ product, onComplete }) => {
         <div>
           <h3 className="text-2xl font-semibold mb-4">Interior</h3>
           <div className="flex gap-4">
-            {interiorOptions.map((interiorOption) => (
+            {customizationOptions.interiorOptions.map((interiorOption) => (
               <button
                 key={interiorOption.name}
                 className={`w-16 h-16 rounded-full border-4 ${
@@ -99,7 +97,7 @@ const CustomizeProduct = ({ product, onComplete }) => {
                 }`}
                 onClick={() => setInterior(interiorOption.name)}
               >
-                <Image src={interiorOption.image} alt={interiorOption.name} width={64} height={64} className="rounded-full" />
+                <Image src={`/imgs/${interiorOption.image}`} alt={interiorOption.name} width={64} height={64} className="rounded-full" />
               </button>
             ))}
           </div>
@@ -109,13 +107,9 @@ const CustomizeProduct = ({ product, onComplete }) => {
   };
 
   return (
-    <div className="customization-container p-5 flex pb-60"> 
+    <div className="customization-container p-5 flex pb-60">
       <div className="w-1/2 flex justify-center items-center">
-        {selectedVehicleImage ? (
-          <Image src={selectedVehicleImage} alt={product.name} width={850} height={200} />
-        ) : (
-          <p className="text-center text-gray-500">Seleccione un color o un interior</p>
-        )}
+        <Image src={selectedImage} alt={product.name} width={850} height={200} />
       </div>
 
       <div className="w-1/2 pl-8">
@@ -132,7 +126,7 @@ const CustomizeProduct = ({ product, onComplete }) => {
               <div className="flex gap-4 mt-6">
                 <button
                   className="bg-blue-500 text-white py-3 px-6 rounded-lg text-lg hover:bg-blue-600 transition-colors"
-                  onClick={() => onComplete({ model, color, interior, image: colorToImageMap[color || "Negro Mosaico Metálico"] })}
+                  onClick={handleFinalizeCustomization}
                 >
                   Finalizar personalización
                 </button>
